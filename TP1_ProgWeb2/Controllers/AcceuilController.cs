@@ -4,11 +4,11 @@ using TP1_ProgWeb2.Models;
 
 namespace TP1_ProgWeb2.Controllers
 {
-    public class HomeController : Controller
+    public class AcceuilController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<AcceuilController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public AcceuilController(ILogger<AcceuilController> logger)
         {
             _logger = logger;
         }
