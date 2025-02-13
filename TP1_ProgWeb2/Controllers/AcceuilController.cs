@@ -1,6 +1,7 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using TP1_ProgWeb2.Models;
+using TP1_ProgWeb2.ViewModels;
 
 namespace TP1_ProgWeb2.Controllers
 {
@@ -15,7 +16,23 @@ namespace TP1_ProgWeb2.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new AcceuilIndexVM() { restaurants = getTopRestaurants(), plats = getLowestPrice() });
+        }
+
+        private IList<Restaurant> getTopRestaurants()
+        {
+            var restaurents = RestaurantsController.GenerateRestaurants()
+                .OrderByDescending(e => e.Note).Take(3).ToList();
+
+            return restaurents;
+        }
+
+        private IList<Plat> getLowestPrice()
+        {
+            var restaurents = PlatController.GeneratePlats()
+                .OrderBy(e => e.Prix).Take(3).ToList();
+
+            return restaurents;
         }
 
         public IActionResult Privacy()

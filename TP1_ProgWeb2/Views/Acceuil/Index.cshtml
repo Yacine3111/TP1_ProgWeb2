@@ -1,12 +1,45 @@
 ﻿@{
     ViewData["Title"] = "Page d'acceuil";
+    @model TP1_ProgWeb2.ViewModels.AcceuilIndexVM
 }
+<div class="container">
+    <h2>Les meilleurs restaurants</h2>
+    <div class="row mb-5">
+        @foreach (var item in Model.restaurants)
+        {
+            <div class="col">
 
-<div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+                <div class="card" style="width: 18rem;">
+                    <img src="images/photo1.jpg" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Nom</h5>
+                        <p class="card-text">Cuisine: @item.Cuisine</p>
+                        <p class="card-text">Note: @item.Note</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <h2>Les plats le moins chers</h2>
+
+    <div class="row">
+        @foreach (var item in Model.plats)
+        {
+            <div class="col">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="images/photo1.jpg" class="card-img-top" alt="..."/>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Nom</h5>
+                        <p class="card-text">Prix: @item.Prix</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
 </div>
+
+
+
