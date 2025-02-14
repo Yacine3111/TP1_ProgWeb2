@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Page d'acceuil";
+    ViewData["Title"] = "Acceuil";
     @model TP1_ProgWeb2.ViewModels.AcceuilIndexVM
 }
 <div class="container">
@@ -10,12 +10,10 @@
             <div class="col">
 
                 <div class="card" style="width: 18rem;">
-                    <img src="images/photo1.jpg" class="card-img-top" alt="..."/>
                     <div class="card-body">
                         <h5 class="card-title">@item.Nom</h5>
                         <p class="card-text">Cuisine: @item.Cuisine</p>
                         <p class="card-text">Note: @item.Note</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +27,7 @@
             <div class="col">
 
                 <div class="card" style="width: 18rem;">
-                    <img src="images/photo1.jpg" class="card-img-top" alt="..."/>
+                    <img src=@Url.Content($"/images/{@item.CheminImage}.jpg") class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5 class="card-title">@item.Nom</h5>
                         <p class="card-text">Prix: @item.Prix</p>

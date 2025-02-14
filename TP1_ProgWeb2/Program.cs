@@ -25,3 +25,6 @@ app.MapControllerRoute(
     pattern: "{controller=Acceuil}/{action=Index}/{id?}");
 
 app.Run();
+
+//pourquoi url.content?
+//index dans Acceuil?

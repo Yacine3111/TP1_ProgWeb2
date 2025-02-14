@@ -14,7 +14,7 @@ namespace TP1_ProgWeb2.Controllers
         {
             return
             [
-                new Restaurant() { Id = 1, Nom = "Le Gourmet", Adresse = "12 Rue de Paris", Telephone = "438-904-1930", Cuisine = "Française", Note = 5.0, Ville = "Paris" },
+                new Restaurant() { Id = 1, Nom = "Le Gourmet", Adresse = "12 Rue de Paris", Telephone = "438-904-1930", Cuisine = "Française", Note = 5.1, Ville = "Paris" },
                 new Restaurant() { Id = 2, Nom = "Pasta Bella", Adresse = "34 Via Roma", Telephone = "514-568-1985", Cuisine = "Italienne", Note = 4.3, Ville = "Rome" },
                 new Restaurant() { Id = 3, Nom = "Sushi Zen", Adresse = "56 Shibuya", Telephone = "418-248-1003", Cuisine = "Japonaise", Note = 4.7, Ville = "Tokyo" },
                 new Restaurant() { Id = 4, Nom = "El Toro Loco", Adresse = "78 Calle Mayor", Telephone = "514-789-1234", Cuisine = "Espagnole", Note = 1.2, Ville = "Madrid" },

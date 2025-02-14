@@ -29,15 +29,10 @@ namespace TP1_ProgWeb2.Controllers
 
         private IList<Plat> getLowestPrice()
         {
-            var restaurents = PlatController.GeneratePlats()
+            var restaurents = PlatsController.GeneratePlats()
                 .OrderBy(e => e.Prix).Take(3).ToList();
 
             return restaurents;
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
