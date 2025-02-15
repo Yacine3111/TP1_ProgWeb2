@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TP1_ProgWeb2.Models;
+using TP1_ProgWeb2.ViewModels;
 
 namespace TP1_ProgWeb2.Controllers
 {
     public class RestaurantsController : Controller
     {
+        [HttpGet("/restaurants")]
         public IActionResult Index()
         {
-            return View();
+            return View(RestaurantsOrder());
         }
 
         public static IList<Restaurant> GenerateRestaurants()
@@ -21,6 +23,25 @@ namespace TP1_ProgWeb2.Controllers
                 new Restaurant() { Id = 5, Nom = "Burger House", Adresse = "90 Broadway", Telephone = "450-147-9630", Cuisine = "Américaine", Note = 3.4, Ville = "New York" },
                 new Restaurant() { Id = 6, Nom = "Curry Palace", Adresse = "23 MG Road", Telephone = "438-997-2247", Cuisine = "Indienne", Note = 2.6, Ville = "Mumbai" }
             ];
+        }
+
+        private IList<RestaurantsIndexVM> RestaurantsOrder()
+        {
+            var plats = PlatsController.GeneratePlats()
+                .GroupBy(p => p.RestaurantId)
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            var restaurants = GenerateRestaurants()
+                .OrderBy(r => r.Nom)
+                .Select(o =>
+                    new RestaurantsIndexVM()
+                    {
+                        NumberOfPlats = plats[o.Id],
+                        Restaurants = o
+
+                    }).ToList();
+
+            return restaurants;
         }
 
     }
