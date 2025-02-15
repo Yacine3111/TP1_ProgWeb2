@@ -28,3 +28,6 @@ app.Run();
 
 //pourquoi url.content?
 //index dans Acceuil?
+//partail sans certaines info
+//tempData et page précédente
+//404 dans shared

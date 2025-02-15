@@ -34,5 +34,33 @@ namespace TP1_ProgWeb2.Controllers
 
             ];
         }
+
+        [HttpGet("/plats/{categorie}")]
+        public IActionResult PlatsCategorie([FromRoute] string categorie)
+        {
+            var plats = GeneratePlats().Where(p => p.Categorie.Equals(categorie)).ToList();
+
+            if (plats.Any())
+            {
+                ViewBag.categorie = categorie;
+                return View("Index", plats);
+
+            }
+
+            return View("Index", GeneratePlats());
+        }
+
+        [HttpGet("/plats/details")]
+        public IActionResult DetailsPlat([FromQuery] int id)
+        {
+            var plat = GeneratePlats().FirstOrDefault(p => p.Id == id);
+
+            if (plat == null)
+            {
+                return NotFound();
+            }
+
+            return View(plat);
+        }
     }
 }
