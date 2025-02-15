@@ -5,9 +5,11 @@ namespace TP1_ProgWeb2.Controllers
 {
     public class PlatsController : Controller
     {
+
+        [HttpGet("/plats")]
         public IActionResult Index()
         {
-            return View();
+            return View(GeneratePlats());
         }
 
         public static IList<Plat> GeneratePlats()
