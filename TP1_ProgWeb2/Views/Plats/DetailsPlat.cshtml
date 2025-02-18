@@ -11,6 +11,8 @@ else
 {
     <h1 class="text-center">@Model.Nom</h1>
     <img src="@Url.Content($"/images/{Model.CheminImage}.jpg")" class="img-fluid" alt="Responsive image">
-    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
+    <h3 class="text-center">Prix: @Model.Prix $</h3>
+    <h3 class="text-center">Catégorie: @Model.Categorie </h3>
+    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary mt-5">Retour à la liste</a>
 }
 

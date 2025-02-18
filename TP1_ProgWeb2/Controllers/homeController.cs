@@ -5,18 +5,18 @@ using TP1_ProgWeb2.ViewModels;
 
 namespace TP1_ProgWeb2.Controllers
 {
-    public class AcceuilController : Controller
+    public class homeController : Controller
     {
-        private readonly ILogger<AcceuilController> _logger;
+        private readonly ILogger<homeController> _logger;
 
-        public AcceuilController(ILogger<AcceuilController> logger)
+        public homeController(ILogger<homeController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View(new AcceuilIndexVM() { restaurants = getTopRestaurants(), plats = getLowestPrice() });
+            return View(new homeIndexVM() { restaurants = getTopRestaurants(), plats = getLowestPrice() });
         }
 
         private IList<Restaurant> getTopRestaurants()

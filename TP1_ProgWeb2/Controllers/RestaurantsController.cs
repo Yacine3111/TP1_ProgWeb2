@@ -6,7 +6,6 @@ namespace TP1_ProgWeb2.Controllers
 {
     public class RestaurantsController : Controller
     {
-        [HttpGet("/restaurants")]
         public IActionResult Index()
         {
             return View(RestaurantsOrder());
@@ -41,6 +40,11 @@ namespace TP1_ProgWeb2.Controllers
 
                     }).ToList();
 
+            if (!restaurants.Any())
+            {
+                Response.StatusCode = 404;
+                ViewBag.StatusCode = Response.StatusCode;
+            }
             return restaurants;
         }
 

@@ -1,25 +1,34 @@
 ﻿@{
     ViewData["Title"] = "Plats";
 }
-<div class="d-flex">
-<h1>Les plats </h1>
-@if (ViewBag.categorie != null)
+@if (ViewBag.StatusCode == 404)
 {
-    <h1 class="">(@ViewBag.categorie)</h1>
+    <h1>Plats introuvable</h1>
 }
-</div>
-<div class="container">
-    <div class="row">
-        @foreach (var item in Model)
+else
+{
+    <div class="d-flex">
+        <h1>Les plats </h1>
+
+        @if (ViewBag.categorie != null)
         {
-            <partial name="_PlatsPartial" model="item"/>
+            <h1 class="">(@ViewBag.categorie)</h1>
         }
     </div>
-</div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <partial name="_PlatsPartial" model="item"/>
+            }
+        </div>
+    </div>
 
-@if (ViewBag.categorie != null)
-{
-    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
+    @if (ViewBag.categorie != null)
+    {
+        <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
 
+    }
 }
+
 

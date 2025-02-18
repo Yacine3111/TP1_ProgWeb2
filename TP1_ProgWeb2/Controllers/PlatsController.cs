@@ -5,10 +5,13 @@ namespace TP1_ProgWeb2.Controllers
 {
     public class PlatsController : Controller
     {
-
-        [HttpGet("/plats")]
         public IActionResult Index()
         {
+            if (!GeneratePlats().Any())
+            {
+                Response.StatusCode = 404;
+                ViewBag.StatusCode = Response.StatusCode;
+            }
             return View(GeneratePlats());
         }
 
@@ -46,7 +49,6 @@ namespace TP1_ProgWeb2.Controllers
                 return View("Index", plats);
 
             }
-
             return View("Index", GeneratePlats());
         }
 
@@ -59,10 +61,23 @@ namespace TP1_ProgWeb2.Controllers
             {
                 Response.StatusCode = 404;
                 ViewBag.StatusCode = Response.StatusCode;
-                return View();
             }
 
             return View(plat);
+        }
+
+        [HttpGet("/plats/details/{id}")]
+        public IActionResult DetailsPlatId(int id)
+        {
+            var plat = GeneratePlats().FirstOrDefault(p => p.Id == id);
+
+            if (plat == null)
+            {
+                Response.StatusCode = 404;
+                ViewBag.StatusCode = Response.StatusCode;
+            }
+
+            return View("DetailsPlat", plat);
         }
     }
 }

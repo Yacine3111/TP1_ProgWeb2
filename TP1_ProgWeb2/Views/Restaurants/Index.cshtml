@@ -1,35 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Restaurants";
 }
-<h1>Les restaurants</h1>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Adresse</th>
-        <th scope="col">Téléphone</th>
-        <th scope="col">Cuisine</th>
-        <th scope="col">Note</th>
-        <th scope="col">Ville</th>
-        <th scope="col">Nombre de plats</th>
-
-
-    </tr>
-    </thead>
-    @foreach (var item in Model)
-    {
-        <tbody>
+@if (ViewBag.StatusCode == 404)
+{
+    <h1>Restaurant introuvale</h1>
+}
+else
+{
+    <h1>Les restaurants</h1>
+    <table class="table">
+        <thead>
         <tr>
-            <td>@item.Restaurants.Nom</td>
-            <td>@item.Restaurants.Adresse</td>
-            <td>@item.Restaurants.Telephone</td>
-            <td>@item.Restaurants.Cuisine</td>
-            <td>@item.Restaurants.Note</td>
-            <td>@item.Restaurants.Ville</td>
-            <td>@item.NumberOfPlats</td>
+            <th scope="col">Nom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Cuisine</th>
+            <th scope="col">Note</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Nombre de plats</th>
         </tr>
-        </tbody>
-    }
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <tr>
+                <td>@item.Restaurants.Nom</td>
+                <td>@item.Restaurants.Adresse</td>
+                <td>@item.Restaurants.Telephone</td>
+                <td>@item.Restaurants.Cuisine</td>
+                <td>@item.Restaurants.Note</td>
+                <td>@item.Restaurants.Ville</td>
+                <td>@item.NumberOfPlats</td>
+            </tr>
+            </tbody>
+        }
     
-</table>
+    </table>
+}
+
