@@ -1,7 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Plats";
 }
-<h1>Les plats: @ViewBag.categorie</h1>
+<div class="d-flex">
+<h1>Les plats </h1>
+@if (ViewBag.categorie != null)
+{
+    <h1 class="">(@ViewBag.categorie)</h1>
+}
+</div>
 <div class="container">
     <div class="row">
         @foreach (var item in Model)
@@ -13,7 +19,7 @@
 
 @if (ViewBag.categorie != null)
 {
-    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">retour</a>
+    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
 
 }
 

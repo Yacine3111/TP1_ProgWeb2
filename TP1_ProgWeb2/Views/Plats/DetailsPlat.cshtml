@@ -1,4 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Détails";
 }
-<h1>@Model.Nom</h1>
+
+@if (ViewBag.StatusCode == 404)
+{
+    <h1>Plat introuvable</h1>
+    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
+}
+else
+{
+    <h1 class="text-center">@Model.Nom</h1>
+    <img src="@Url.Content($"/images/{Model.CheminImage}.jpg")" class="img-fluid" alt="Responsive image">
+    <a asp-controller="Plats" asp-action="Index" class="btn btn-primary">Retour à la liste</a>
+}
+

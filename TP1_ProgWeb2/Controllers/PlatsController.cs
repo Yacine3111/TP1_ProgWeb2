@@ -57,7 +57,9 @@ namespace TP1_ProgWeb2.Controllers
 
             if (plat == null)
             {
-                return NotFound();
+                Response.StatusCode = 404;
+                ViewBag.StatusCode = Response.StatusCode;
+                return View();
             }
 
             return View(plat);
